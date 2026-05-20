@@ -5,7 +5,6 @@ import { catalogo } from "./catalogo.js";
 let total = 0;
 let pedidos = [];
 
-// Agregar Pedido (tu codigo original)
 export function agregarPedido(id, cantidad) {
     let producto = catalogo.find(p => p.id === id);
     if (producto) {
@@ -18,7 +17,7 @@ export function agregarPedido(id, cantidad) {
     }
 }
 
-// Mostrar Pedidos (tu codigo original)
+
 export function mostrarPedidos() {
     if (pedidos.length === 0) {
         console.log("No hay pedidos aun.");
@@ -55,7 +54,7 @@ export function calcularTotales() {
     console.log("===============")
 }
 
-// Funcion para reiniciar (util)
+// Funcion para reiniciar
 export function reiniciarCaja() {
     pedidos = []
     total = 0
