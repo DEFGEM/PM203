@@ -17,4 +17,8 @@ export function mostrarPedidos() {
     console.log("=== LISTA DE PEDIDOS ===");
     pedidos.forEach((p, i) => console.log(`${i + 1}. ${p.nombre} x${p.cantidad} - $${p.subtotal}`));
     console.log("TOTAL: $" + total);
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
