@@ -17,7 +17,11 @@ export function agregarPedido(id, cantidad) {
     }
 }
 
+<<<<<<< HEAD
 
+=======
+// Mostrar Pedidos 
+>>>>>>> 5d174d1 (actualizar caja.js)
 export function mostrarPedidos() {
     if (pedidos.length === 0) {
         console.log("No hay pedidos aun.");
@@ -54,7 +58,11 @@ export function calcularTotales() {
     console.log("===============")
 }
 
+<<<<<<< HEAD
 // Funcion para reiniciar
+=======
+// Funcion para reiniciar 
+>>>>>>> 5d174d1 (actualizar caja.js)
 export function reiniciarCaja() {
     pedidos = []
     total = 0
