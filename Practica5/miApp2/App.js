@@ -4,7 +4,7 @@ import { StatusBar } from 'expo-status-bar'; //puede ser opcion quitarlo o no
 import { StyleSheet, Text, View, Image } from 'react-native';
 import {Saludo} from './components/Saludo';
 import {Saludo2} from './components/Saludo2';
-
+import {Perfil} from './components/Perfil';
 
 // zona2 main }: hofar de los componetes
 export default function App() {
@@ -22,6 +22,8 @@ export default function App() {
       <Text>!------------------Compoentes Propios Compuestos------</Text>
       {/* <Saludo></Saludo> */}
       <Saludo2></Saludo2>
+      <Text>!------------------Compoentes Perfil------</Text>
+      <Perfil></Perfil>
       <StatusBar style="auto" />
     </View>
   );
