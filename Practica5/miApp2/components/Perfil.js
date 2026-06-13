@@ -1,20 +1,20 @@
 // persil usadno desdtrucuturacion
-import { View, Text, Button } from 'react-native'
+import { View, Text, Button, StyleSheet } from 'react-native'
 import React, {useState} from 'react'
 
 export const Perfil = ({nombre, carrera, materia, cuatri}) => {
     const[mostrar, setMostrar] = useState(true);
     
     return (
-        <View>
-            <Text>{nombre}</Text>
+        <View style={styles.tarjeta}>
+            <Text style={styles.nombre}>{nombre}</Text>
 
             {/* Renderizado condicional */}
             { mostrar && 
             <>
-            <Text>{carrera}</Text>
-            <Text>{materia}</Text>
-            <Text>{cuatri}</Text>
+            <Text style={styles.carrera}>{carrera}</Text>
+            <Text style={styles.otroTexto}>{materia}</Text>
+            <Text style={styles.otroTexto}>{cuatri}</Text>
             </>
             }
             {/* un boton para cambiar el valor de mostrar */}
@@ -24,6 +24,29 @@ export const Perfil = ({nombre, carrera, materia, cuatri}) => {
     )
 }
 
+const styles = StyleSheet.create({
+    nombre:{
+        fontSize:24,
+        fontWeight:"600",
+        textTransform:"uppercase"
+    },
+    carrera:{
+        fontSize:24,
+        color:"blue",
+        fontWeight:"600",
+        textTransform:"Robot"
+    },
+    otroTexto:{
+        fontSize:12, 
+        fontfamily:"courier",
+        fontfamily:'italic',
+    },
+    tarjeta:{
+        borderWidth:2,
+        padding:10,
+        margin:10,
+    },
+})
 
 
 

@@ -10,25 +10,11 @@ import {Perfil} from './components/Perfil';
 export default function App() {
   return (
     <View style={styles.container}>
-      {/* <Image></Image>
-      <Image source={require('./assets/wave.png')}/>
-      <Text>!------------------Compoentes Nativos------------------</Text>
-      <Text>!Hola mundo React Native</Text>
 
-      <Text>!------------------Compoentes Propios simples-----------</Text>
-      <Saludo></Saludo>
-      
-      
-      <Text>!------------------Compoentes Propios Compuestos------</Text> */}
-      {/* <Saludo></Saludo> */}
-      {/* <Saludo2></Saludo2>
-      <Text>!------------------Compoentes Perfil------</Text>
-      <Perfil></Perfil>
-      <StatusBar style="auto" /> */}
 
       <Perfil nombre="cristofer" carrera="ING sistemas" materia="programacion movil" cuatri="9no"></Perfil>
-      <Text>....................................................</Text>
-      <Text>....................................................</Text>
+      {/* <Text>....................................................</Text>
+      <Text>....................................................</Text> */}
       <Perfil 
       nombre="yanhyu" 
       carrera="ING istemas" 
