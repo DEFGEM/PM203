@@ -1,12 +1,12 @@
 // persil usadno desdtrucuturacion
 import { View, Text, Button, StyleSheet } from 'react-native'
 import React, {useState} from 'react'
-
-export const Perfil = ({nombre, carrera, materia, cuatri}) => {
+// znoa 1
+export const Perfil = ({nombre, carrera, materia, cuatri, estiloExt}) => {
     const[mostrar, setMostrar] = useState(true);
     
     return (
-        <View style={styles.tarjeta}>
+        <View style={[styles.tarjeta, estiloExt]}>
             <Text style={styles.nombre}>{nombre}</Text>
 
             {/* Renderizado condicional */}
@@ -23,7 +23,7 @@ export const Perfil = ({nombre, carrera, materia, cuatri}) => {
         </View>
     )
 }
-
+// zona 2
 const styles = StyleSheet.create({
     nombre:{
         fontSize:24,
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     },
     tarjeta:{
         borderWidth:2,
-        padding:10,
+        padding:25,
         margin:10,
     },
 })

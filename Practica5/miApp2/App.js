@@ -12,15 +12,17 @@ export default function App() {
     <View style={styles.container}>
 
 
-      <Perfil nombre="cristofer" carrera="ING sistemas" materia="programacion movil" cuatri="9no"></Perfil>
+      <Perfil estiloExt={styles.tarjetaRoja} nombre="cristopher1" carrera="ING sistemas" materia="programacion movil" cuatri="9no"></Perfil>
       {/* <Text>....................................................</Text>
       <Text>....................................................</Text> */}
       <Perfil 
+      estiloExt={styles.tarjetaVerde}
       nombre="yanhyu" 
       carrera="ING istemas" 
       materia="PM" 
       cuatri="9no"/>
       
+      <Perfil estiloExt={styles.tarjetaRoja} nombre="cristopher2" carrera="ING sistemas" materia="programacion movil" cuatri="9no"></Perfil>
     </View>
   );
 }
@@ -32,6 +34,17 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
+    flexDirection:'row'
   },
+
+
+
+// znoa de estilos de las tarjetas
+  tarjetaRoja:{
+        backgroundColor:'#ff002bff',
+    },
+    tarjetaVerde:{
+        backgroundColor:"#00ff00ff",
+    },
 });
