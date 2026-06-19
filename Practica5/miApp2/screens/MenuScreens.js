@@ -76,7 +76,8 @@ export default function MenuScreens() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
+    // ponemos una sepracion por
+    fontSize: 60,
     paddingVertical: 10,
     backgroundColor: "#fff",
     alignItems: "center",
