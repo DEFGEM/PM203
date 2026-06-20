@@ -1,25 +1,13 @@
+// ZONA 1
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Switch,
-  Pressable,
-  Alert,
-  Platform,
+import { StyleSheet, 
+  Text, 
+  View, 
+  Switch, 
+  Pressable, 
+  Alert 
 } from "react-native";
-
-if (Platform.OS === "web") {
-  Alert.alert = (titular, mensaje, boton) => {
-    const list = Array.isArray(mensaje) ? mensaje : boton;
-    if (list) {
-      if (window.confirm(titular)) list.find((b) => b.onPress)?.onPress();
-    } else {
-      window.alert(titular + (mensaje ? "\n" + mensaje : ""));
-    }
-  };
-}
-
+// ZNOA 2
 export default function PressableScreen() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const toggleSwitch = () => setIsDarkMode((previousState) => !previousState);
@@ -33,7 +21,7 @@ export default function PressableScreen() {
       >
         Ajustes del Sistema
       </Text>
-
+      {/*ZNOA 2.2*/}
       <View style={styles.row}>
         <Text
           style={[
@@ -51,7 +39,7 @@ export default function PressableScreen() {
           disabled={false}
         />
       </View>
-
+      {/*ZNOA 2.2 */}
       <Pressable
         onPress={() =>
           Alert.alert("Éxito", "Configuración guardada correctamente")
@@ -62,7 +50,7 @@ export default function PressableScreen() {
         delayLongPress={2000}
         style={({ pressed }) => [
           styles.button,
-          { backgroundColor: pressed ? "#0056b3" : "#007BFF" }, // Prop / Estilo dinámico si se presiona
+          { backgroundColor: pressed ? "#0056b3" : "#007BFF" },
         ]}
       >
         <Text style={styles.buttonText}>Guardar Cambios</Text>
@@ -70,7 +58,7 @@ export default function PressableScreen() {
     </View>
   );
 }
-
+// ZONA 3 Estilos y Posicionamiento
 const styles = StyleSheet.create({
   container: {
     flex: 1,

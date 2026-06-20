@@ -51,6 +51,7 @@ export default function MenuScreens() {
           <Button
             title="Practica TextInput"
             onPress={() => setScreen("TextInput:")}
+            color="#ba00feff"
           />
           <Button
             title="Practica FlatList"
