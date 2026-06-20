@@ -1,24 +1,110 @@
-// zona1: importaciones de componetes y archivos
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Switch,
+  Pressable,
+  Alert,
+  Platform,
+} from "react-native";
 
-import { StatusBar } from "expo-status-bar"; //puede ser opcion quitarlo o no
-import { StyleSheet, Text, View, Image } from "react-native";
+if (Platform.OS === "web") {
+  Alert.alert = (titular, mensaje, boton) => {
+    const list = Array.isArray(mensaje) ? mensaje : boton;
+    if (list) {
+      if (window.confirm(titular)) list.find((b) => b.onPress)?.onPress();
+    } else {
+      window.alert(titular + (mensaje ? "\n" + mensaje : ""));
+    }
+  };
+}
 
-// zona2 main }: hofar de los componetes
 export default function PressableScreen() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const toggleSwitch = () => setIsDarkMode((previousState) => !previousState);
+
   return (
-    <View style={styles.container}>
-      <Text>aquie va la practica de Rocke y/o Armado</Text>
+    <View
+      style={[styles.container, isDarkMode ? styles.bgDark : styles.bgLight]}
+    >
+      <Text
+        style={[styles.title, isDarkMode ? styles.textDark : styles.textLight]}
+      >
+        Ajustes del Sistema
+      </Text>
+
+      <View style={styles.row}>
+        <Text
+          style={[
+            styles.label,
+            isDarkMode ? styles.textDark : styles.textLight,
+          ]}
+        >
+          Modo Oscuro: {isDarkMode ? "Activado" : "Desactivado"}
+        </Text>
+        <Switch
+          trackColor={{ false: "black", true: "white" }}
+          thumbColor={isDarkMode ? "yellow" : "gray"}
+          onValueChange={toggleSwitch}
+          value={isDarkMode}
+          disabled={false}
+        />
+      </View>
+
+      <Pressable
+        onPress={() =>
+          Alert.alert("Éxito", "Configuración guardada correctamente")
+        } // Prop: Acción al presionar
+        onLongPress={() =>
+          Alert.alert("Info", "Mantuviste presionado el botón")
+        } // Prop: Presión larga
+        delayLongPress={2000}
+        style={({ pressed }) => [
+          styles.button,
+          { backgroundColor: pressed ? "#0056b3" : "#007BFF" }, // Prop / Estilo dinámico si se presiona
+        ]}
+      >
+        <Text style={styles.buttonText}>Guardar Cambios</Text>
+      </Pressable>
     </View>
   );
 }
 
-// Zona 3 Estilos y Posicionamiento
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    flexDirection: "column",
+    padding: 20,
+  },
+  bgLight: { backgroundColor: "#f5f5f5" },
+  bgDark: { backgroundColor: "#121212" },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 40,
+  },
+  textLight: { color: "#000" },
+  textDark: { color: "#fff" },
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
+    marginBottom: 40,
+    paddingHorizontal: 20,
+  },
+  label: { fontSize: 18 },
+  button: {
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 8,
+    elevation: 8,
+  },
+  buttonText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });
