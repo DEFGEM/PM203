@@ -10,7 +10,7 @@ import {
   StyleSheet,
   Alert,
   Platform,
-} from "react-native";
+} from "react-native";c
 
 Platform;
 if (Platform.OS === "web") {
@@ -55,7 +55,7 @@ export default function Registro() {
 
       <TextInput
         style={styles.input}
-        placeholder="Nombre(s)"
+        placeholder="Nombre Completo"
         placeholderTextColor="#999"
         autoCapitalize="words"
         value={nombre}
@@ -72,6 +72,14 @@ export default function Registro() {
       <TextInput
         style={styles.input}
         placeholder="Semestre"
+        keyboardType="number-pad"
+        placeholderTextColor="#999"
+        value={semestre}
+        onChangeText={setSemestre}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Cuatrimestre"
         keyboardType="number-pad"
         placeholderTextColor="#999"
         value={semestre}
