@@ -141,7 +141,7 @@ export default function LibrosF() {
                 >
                   {guardando ? (
                     <View style={styles.filaGuardando}>
-                      <ActivityIndicator size="small" color="#ffffff" />
+                      {/* <ActivityIndicator size="small" color="#ffffff" /> */}
                       <Text style={styles.textoBoton}>Guardando...</Text>
                     </View>
                   ) : (
