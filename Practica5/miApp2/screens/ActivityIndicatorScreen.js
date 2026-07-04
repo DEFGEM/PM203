@@ -18,6 +18,7 @@ import {
 export default function ActivityIndicatorScreen() {
   const [cargando, setCargando] = useState(false);
 
+  
   const handleSubmit = () => {
     Keyboard.dismiss();
     setCargando(true);
