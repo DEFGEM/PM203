@@ -10,7 +10,8 @@ import {
   StyleSheet,
   Alert,
   Platform,
-} from "react-native";c
+} from "react-native";
+c;
 
 Platform;
 if (Platform.OS === "web") {
@@ -25,24 +26,30 @@ if (Platform.OS === "web") {
 }
 
 export default function Registro() {
+  // variables de textInput
   const [nombre, setNombre] = useState("");
-
   const [carrera, setCarrera] = useState("");
   const [semestre, setSemestre] = useState("");
+
+  // variables de Switch
   const [taller, setTaller] = useState(false);
   const [constancia, setConstancia] = useState(false);
   const [deportes, setDeportes] = useState(false);
 
+  // funcion para enviar el formulario
   const enviar = () => {
+    // valida que los campos no esten vacios
     if (!nombre || !carrera || !semestre) {
       Alert.alert("Campos incompletos", "Debs llenar todos los campos :)");
       return;
     }
+    // valida que el semestre sea un numero
     if (!semestre.match(/^[1-9]$/)) {
       Alert.alert("ERROR", "El semestre debe ser un nunero");
       setSemestre("");
       return;
     }
+    // muestra una alerta con los datos del formulario
     Alert.alert(
       "Registro Envio",
       `Nombre: ${nombre}\nCarrera: ${carrera}\nSemestre: ${semestre}\nTaller: ${taller ? "si" : "no"}\nConstancia: ${constancia ? "si" : "no"}\nDeportes: ${deportes ? "si" : "no"}`,
@@ -51,8 +58,10 @@ export default function Registro() {
 
   return (
     <SafeAreaView style={styles.container}>
+      {/* titulo */}
       <Text style={styles.title}>Registro de usuario</Text>
 
+      {/* inputs */}
       <TextInput
         style={styles.input}
         placeholder="Nombre Completo"
@@ -86,8 +95,10 @@ export default function Registro() {
         onChangeText={setSemestre}
       />
 
+      {/* subtitle */}
       <Text style={styles.subtitle}>Opciones</Text>
 
+      {/* switches */}
       <View style={styles.row}>
         <Text style={styles.label}>¿Asistira al taller?</Text>
         <Switch value={taller} onValueChange={setTaller} />
