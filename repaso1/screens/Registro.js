@@ -11,7 +11,6 @@ import {
   Alert,
   Platform,
 } from "react-native";
-c;
 
 Platform;
 if (Platform.OS === "web") {
