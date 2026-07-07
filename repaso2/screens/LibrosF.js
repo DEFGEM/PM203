@@ -29,27 +29,38 @@ if (Platform.OS === "web") {
 }
 
 export default function LibrosF() {
+  // variables de estado
   const [splash, setSplash] = useState(true);
+  // variable de estado que controla si se esta guardando algo
   const [guardando, setGuardando] = useState(false);
 
+  // variables para el textInput
   const [titulo, setTitulo] = useState("");
   const [autor, setAutor] = useState("");
   const [genero, setGenero] = useState("");
+  // lista donde se guardaran los libros
   const [libros, setLibros] = useState([]);
 
+  // efecto que se ejecuta cuando se monta el componente
   useEffect(() => {
+    // simula una espera de 2 segundos
     setTimeout(() => {
       setSplash(false);
     }, 2000);
   }, []);
+
+  // funcion para agregar un libro
   const agregarLibro = () => {
+    // valida que los campos no esten vacios
     if (!titulo || !autor || !genero) {
       Alert.alert("Alert", "Todos los campos son obligatorios.");
       return;
     }
+    // cambia el estado a true para mostrar el indicador de carga
     setGuardando(true);
-
+    // simula una espera de 4 segundos
     setTimeout(() => {
+      // crea un nuevo libro con un id unico
       const nuevoLibro = {
         id: Date.now().toString(),
         titulo: titulo,
@@ -57,26 +68,32 @@ export default function LibrosF() {
         genero: genero,
       };
 
+      // agrega el nuevo libro al principio de la lista
       setLibros([nuevoLibro, ...libros]);
-
+      // limpia los inputs
       setTitulo("");
       setAutor("");
       setGenero("");
+      // cambia el estado a false para ocultar el indicador de carga
       setGuardando(false);
 
       Alert.alert("Alert", "Libro guardado correctamente.");
     }, 4000);
   };
 
+  // si el splash es true, muestra el splash screen
   if (splash) {
     return (
       <View style={styles.splashContainer}>
+        {/* una imagen de referencia  */}
         <Image
           source={require("../assets/logo.png")}
           style={styles.splashLogo}
           resizeMode="contain"
         />
+        {/* texto de referencia  */}
         <Text style={styles.splashTexto}>repa2</Text>
+        {/* indicador de carga */}
         <ActivityIndicator
           size="large"
           color="#2563eb"
@@ -88,6 +105,7 @@ export default function LibrosF() {
   }
 
   return (
+    // imagen de fondo
     <ImageBackground
       source={require("../assets/libro.jpg")}
       style={styles.fondo}
@@ -95,15 +113,19 @@ export default function LibrosF() {
     >
       <View style={styles.capaOscura}>
         <SafeAreaView style={styles.container}>
+          {/* una lista que muestra los libros */}
           <FlatList
             data={libros}
             keyExtractor={(item) => item.id}
             contentContainerStyle={styles.lista}
+            // componente que se muestra antes de la lista
             ListHeaderComponent={
               <View>
+                {/* titulo principal */}
                 <Text style={styles.tituloPrincipal} title="\n">
                   Catalogo de Libros
                 </Text>
+                {/* inputs de referencia  */}
                 <TextInput
                   style={styles.input}
                   placeholder="Titulo del libro"
@@ -131,6 +153,7 @@ export default function LibrosF() {
                   editable={!guardando}
                 />
 
+                {/* boton para agregar libro */}
                 <Pressable
                   style={[
                     styles.botonAgregar,
@@ -139,6 +162,7 @@ export default function LibrosF() {
                   onPress={agregarLibro}
                   disabled={guardando}
                 >
+                  {/* si guardando es true, cambie el texto del boton por "Guardando..." y desactiva el boton*/}
                   {guardando ? (
                     <View style={styles.filaGuardando}>
                       {/* <ActivityIndicator size="small" color="#ffffff" /> */}
@@ -149,6 +173,7 @@ export default function LibrosF() {
                   )}
                 </Pressable>
 
+                {/* si guardando es true, muestra el indicador de carga */}
                 {guardando && (
                   <View style={styles.guardandoContainer}>
                     <ActivityIndicator size="large" color="#ffffff" />
@@ -157,14 +182,18 @@ export default function LibrosF() {
                     </Text>
                   </View>
                 )}
+                {/* texto que muestra la cantidad de libros */}
                 <Text style={styles.total}>
                   Total de libro: {libros.length}
                 </Text>
               </View>
             }
+            // componente que se muestra si la lista esta vacia
             ListEmptyComponent={
               <Text style={styles.listaVacia}>No hay libros registrados</Text>
             }
+            
+            // componente que se muestra para cada item de la lista
             renderItem={({ item }) => (
               <View style={styles.tarjetaLibro}>
                 <Text style={styles.tituloLibro}>{item.titulo}</Text>
