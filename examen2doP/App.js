@@ -2,7 +2,9 @@ import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
 import {
   ActivityIndicator,
+  Alert,
   FlatList,
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
@@ -21,6 +23,13 @@ const productos = [
 
 export default function App() {
   const [cargando, setCargando] = useState(true);
+
+  const mostrarInformacion = (producto) => {
+    Alert.alert(
+      "Informacion del producto",
+      `ID: ${producto.id}\nNombre: ${producto.nombre}\nMarca: ${producto.marca}\nPrecio: ${producto.precio}`,
+    );
+  };
 
   useEffect(() => {
     const temporizador = setTimeout(() => {
@@ -56,13 +65,19 @@ export default function App() {
           keyExtractor={(item) => item.id}
           scrollEnabled={false}
           renderItem={({ item }) => (
-            <View style={styles.productoItem}>
+            <Pressable
+              onPress={() => mostrarInformacion(item)}
+              style={({ pressed }) => [
+                styles.productoItem,
+                pressed ? styles.productoItemPresionado : null,
+              ]}
+            >
               <View>
                 <Text style={styles.productoNombre}>{item.nombre}</Text>
                 <Text style={styles.productoMarca}>{item.marca}</Text>
               </View>
               <Text style={styles.productoPrecio}>{item.precio}</Text>
-            </View>
+            </Pressable>
           )}
         />
       </View>
@@ -116,6 +131,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     gap: 12,
+  },
+  productoItemPresionado: {
+    opacity: 0.7,
   },
   productoNombre: {
     color: "#111827",
